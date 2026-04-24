@@ -12,7 +12,6 @@ import pages.Cartpage;
 import pages.Loginpage;
 import pages.productspage;
 import utils.ExtentManager;
-
 import java.lang.reflect.Method;
 
 public class CartTest extends BaseTest {
@@ -63,7 +62,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(cartsuccessmessage,"Your product has been added to cart.");
         cartpage.viewcartlist();
         String cartprice=cartpage.checkbluetopprouctprice();
-        //Assert.assertEquals(cartprice,"Rs. 1000");
+        Assert.assertEquals(cartprice,"Rs. 1000");
         String cartemptyproductone=cartpage.emptycart();
         Assert.assertEquals(cartemptyproductone,"Cart is empty!");
     }

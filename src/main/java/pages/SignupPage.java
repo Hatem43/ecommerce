@@ -23,7 +23,7 @@ public class SignupPage {
         this.page = page;
     }
 
-    public void gotosignuppage() {
+    public void gotologinandsignuppage() {
         page.click(loginsignup);
     }
 

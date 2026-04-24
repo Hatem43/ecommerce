@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
         extent= ExtentManager.getExtent();
         test=extent.createTest(method.getName());
         signup=new SignupPage(page);
-        signup.gotosignuppage();
+        signup.gotologinandsignuppage();
 
     }
 

@@ -44,7 +44,6 @@ public class BaseTest{
         browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
         page=browser.newPage();
         page.navigate("https://automationexercise.com/");
-        page.click("//a[normalize-space()='Signup / Login']");
         FileReader f=new FileReader("C:\\Users\\l e n o v o\\IdeaProjects\\playwrightproject\\src\\test\\resources\\Info.json");
         JSONParser j=new JSONParser();
         Object o=j.parse(f);
