@@ -1,1 +1,0 @@
-{"uuid":"bc2f22b1-ef2b-4913-b553-4e62e7473071","name":"tests.Checkoutest.logout","children":["85c2d47e-7ce1-432a-a85e-1b8860640e6a"],"description":"","befores":[],"afters":[{"name":"logout","status":"broken","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1776819861710,"stop":1776819861710}],"start":1776819861710,"stop":1776819861710}
