@@ -25,6 +25,8 @@ public class Loginpage extends SignupPage{
     }
 
     public void loginwithinvaliddata(String email,String password){
+        Locator log=page.locator(gotologin);
+        log.click();
         page.fill(emailAddress,email);
         Locator pass=page.getByPlaceholder("Password");
         pass.fill(password);
