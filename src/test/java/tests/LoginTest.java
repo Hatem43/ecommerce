@@ -28,12 +28,13 @@ public class LoginTest extends BaseTest {
     public void setuptest(Method method) throws IOException, ParseException {
         extent= ExtentManager.getExtent();
         test=extent.createTest(method.getName());
+        signup=new SignupPage(page);
+        login=new Loginpage(page);
     }
 
 /*
     @Test
     public void signuptestwithvalidcredentials() {
-        signup=new SignupPage(page);
         signup.gotologinandsignuppage();
         signup.enteraccountinformation(name,email,password,day,month,year);
         signup.enteraddressinformation(firstnam,lastnam,comp,address,count,stat,cit,zip,mob);
@@ -43,14 +44,12 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void logintestwithvaliddata() {
-        login=new Loginpage(page);
         login.loginwithvaliddata(email,password);
         Assert.assertEquals(page.url(),"https://automationexercise.com/");
     }
 
     @Test
     public void logintestwithinvaliddata() {
-        login=new Loginpage(page);
         login.loginwithinvaliddata("hesso","21212s");
         Assert.assertEquals(page.url(),"https://automationexercise.com/login");
     }
