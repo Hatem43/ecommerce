@@ -57,6 +57,7 @@ public class checkoutpage extends SignupPage {
          Locator expiredyear=page.locator(cardeexpireyear);
          expiredyear.fill(String.valueOf(expirationyear));
          Locator payandconfirm=page.locator(submit);
+         payandconfirm.scrollIntoViewIfNeeded();
          payandconfirm.click();
          Locator ordersuccessmessage=page.getByRole(AriaRole.HEADING,new Page.GetByRoleOptions().setName("Order Placed!"));
          String ordermesaage=ordersuccessmessage.textContent();
