@@ -55,7 +55,16 @@ public class LoginTest extends BaseTest {
     }
 
     @AfterMethod
-    public void screen(){
+    public void tearDown(ITestResult result) {
+
+        if (result.getStatus() == ITestResult.SUCCESS) {
+            test.pass("Test Passed");
+        } else if (result.getStatus() == ITestResult.FAILURE) {
+            test.fail(result.getThrowable());
+        } else {
+            test.skip("Test Skipped");
+        }
+
         extent.flush();
     }
 

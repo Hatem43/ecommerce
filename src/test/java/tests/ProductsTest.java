@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.Locator;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -68,9 +69,18 @@ public class ProductsTest extends BaseTest {
         }
 
         @AfterMethod
-        public void logout() {
+        public void logout(ITestResult result) {
             Locator log=page.locator(logoutbutton);
             log.click();
+
+            if (result.getStatus() == ITestResult.SUCCESS) {
+                test.pass("Test Passed");
+            } else if (result.getStatus() == ITestResult.FAILURE) {
+                test.fail(result.getThrowable());
+            } else {
+                test.skip("Test Skipped");
+            }
+
             extent.flush();
         }
 }
