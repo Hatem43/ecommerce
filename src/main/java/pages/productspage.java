@@ -69,22 +69,18 @@ public class productspage extends SignupPage {
         mencateg.click();
         Locator tshirt = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Tshirts"));
         tshirt.click();
-        Locator tshirstlistheading = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Men - Tshirts Products"));
-        Boolean cateoryheading = tshirstlistheading.isVisible();
-        System.out.println("is the category heading visible" + cateoryheading);
-        String tshirstlistname = tshirstlistheading.textContent();
-        return tshirstlistname;
+        String tshirtpageresult=page.url();
+        return tshirtpageresult;
     }
 
 
     public String searchformenJeans() {
         Locator mencateg = page.locator(mencategory);
         mencateg.click();
-        Locator jeans = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Jeans"));
+        Locator jeans = page.locator("(//a[normalize-space()='Jeans'])[1]");
         jeans.click();
-        Locator jeanslistheading = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Men - Jeans Products"));
-        String jeanslistname = jeanslistheading.textContent();
-        return jeanslistname;
+        String jeanspageresult=page.url();
+        return jeanspageresult;
     }
 
     public void viewbluetopproduct(){

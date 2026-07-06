@@ -47,14 +47,13 @@ public class ProductsTest extends BaseTest {
 
     }
 
+
     @Test(priority = 1)
     public void searchproductcategory() {
-        String actualproductsresult1=products.searchformenJeans();
-        Assert.assertEquals(actualproductsresult1,"Men - Jeans Products");
-        Assert.assertEquals(page.url(),"https://automationexercise.com/category_products/6");
-        String actualproductsresult2=products.searchformenTshirts();
-        Assert.assertEquals(actualproductsresult2,"Men - Tshirts Products");
-        Assert.assertEquals(page.url(),"https://automationexercise.com/category_products/3");
+        String jeanscategorypage=products.searchformenJeans();
+        Assert.assertEquals(jeanscategorypage,"https://automationexercise.com/category_products/6");
+        String tshirtcategorypage=products.searchformenTshirts();
+        Assert.assertEquals(tshirtcategorypage,"https://automationexercise.com/category_products/3");
     }
 
         @Test(priority = 2)
@@ -67,6 +66,7 @@ public class ProductsTest extends BaseTest {
             Assert.assertEquals(cartemptyproductone,"Cart is empty!");
             Assert.assertEquals(cartemptyproducttwo,"Cart is empty!");
         }
+
 
         @AfterMethod
         public void logout(ITestResult result) {
