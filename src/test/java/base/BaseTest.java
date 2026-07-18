@@ -1,25 +1,20 @@
 package base;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class BaseTest{
 
     protected Playwright playwright;
     protected Browser browser;
+    protected BrowserContext context;
     protected Page page;
     protected String name;
     protected String email;
@@ -41,9 +36,11 @@ public class BaseTest{
     @BeforeSuite
     public void setup() throws IOException, ParseException {
         playwright = Playwright.create();
-        browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
-        page=browser.newPage();
+        browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000).setArgs(Arrays.asList("--start-maximized")));
+        context = browser.newContext(new Browser.NewContextOptions().setViewportSize(null));
+        page=context.newPage();
         page.navigate("https://automationexercise.com/");
+
         FileReader f=new FileReader("C:\\Users\\l e n o v o\\IdeaProjects\\playwrightproject\\src\\test\\resources\\Info.json");
         JSONParser j=new JSONParser();
         Object o=j.parse(f);
