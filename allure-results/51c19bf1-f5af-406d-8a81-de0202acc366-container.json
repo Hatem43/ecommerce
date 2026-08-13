@@ -1,0 +1,1 @@
+{"uuid":"51c19bf1-f5af-406d-8a81-de0202acc366","name":"tests.CartTest.logout","children":["5fc4a000-4d5d-4be6-a1cf-2760dae5eab2"],"description":"","befores":[],"afters":[{"name":"logout","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1786655005330,"stop":1786655007070}],"start":1786655005330,"stop":1786655007070}
