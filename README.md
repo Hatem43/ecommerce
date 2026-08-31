@@ -1,1 +1,1 @@
-Automation project for Ecommerce using playwright(java)
+Automation project for E-commerce using playwright(java)
