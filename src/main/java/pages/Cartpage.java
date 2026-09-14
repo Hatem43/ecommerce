@@ -8,10 +8,11 @@ public class Cartpage extends SignupPage {
     String updatedprice="(//p[@class='cart_total_price'])[1]";
     String cart="//tbody//tr";
     String carttable="#product-1";
-    String emptybutton="(//i[@class='fa fa-times'])[1]";
     String emptymessage="//b[normalize-space()='Cart is empty!']";
     String bluetoproduct="//a[normalize-space()='Blue Top']";
     String cartprice="(//p[@class='cart_total_price'])[1]";
+    String emptyinfo;
+    boolean isempty;
 
     public Cartpage(Page page) {
         super(page);
@@ -78,12 +79,37 @@ public class Cartpage extends SignupPage {
     checkoutbutton.click();
     }
 
-    public String emptycart(){
-        Locator empty=page.locator(emptybutton);
-        empty.click();
-        Locator carttext=page.locator(emptymessage);
-        String emptyinfo=carttext.textContent();
-        return emptyinfo;
+    public boolean emptycart() {
+
+        Locator tablerows = page.locator("//tbody//tr");
+        if (tablerows.count() > 0) {
+            Locator removebuttons = page.locator(".cart_quantity_delete");
+            while (removebuttons.count() > 0) {
+                removebuttons.first().click();
+            }
+            Locator carttext = page.locator(emptymessage);
+            emptyinfo = carttext.textContent();
+            if (emptyinfo.equalsIgnoreCase("Cart is empty!")) {
+                isempty = true;
+            } else {
+                isempty = false;
+            }
+        }
+        else {
+            isempty = false;
+            System.out.println("the cart is already empty!");
+        }
+        return isempty;
     }
 
-}
+        /*
+        for(int i=0;i<tablerows.count();i++){
+            Locator row=tablerows.nth(i);
+            System.out.println("Row " + i);
+            Locator emptybutton=row.locator(".cart_quantity_delete");
+            emptybutton.click();
+
+        }
+
+         */
+    }

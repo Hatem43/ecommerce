@@ -61,10 +61,8 @@ public class ProductsTest extends BaseTest {
             products.addtwodifferentproductstocart();
             Locator cartbutton= page.locator(cartebutton);
             cartbutton.click();
-            String cartemptyproductone=cart.emptycart();
-            String cartemptyproducttwo=cart.emptycart();
-            Assert.assertEquals(cartemptyproductone,"Cart is empty!");
-            Assert.assertEquals(cartemptyproducttwo,"Cart is empty!");
+            boolean cartemptyproduct=cart.emptycart();
+            Assert.assertTrue(cartemptyproduct);
         }
 
 

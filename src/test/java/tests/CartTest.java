@@ -36,24 +36,28 @@ public class CartTest extends BaseTest {
     }
 
     @Test (priority = 0)
-
     public void carttestproduct(){
         products.viewbluetopproduct();
         String actualproductname=products.viewproductname();
+        System.out.println("the product name is " +actualproductname);
         Assert.assertEquals(actualproductname,"Blue Top");
         String actualproductprice=products.viewproductprice();
+        System.out.println("the product price is " +actualproductprice);
         Assert.assertEquals(actualproductprice,"Rs. 500");
         products.addbluetoptocart();
-        cartpage.viewcartlist();
+        boolean actual=cartpage.viewcartlist();
+        Assert.assertTrue(actual);
         int cartsize=cartpage.viewcartoneproductsize();
-        System.out.println("the cart size "+ cartsize);
+        System.out.println("the cart size is "+ cartsize);
         Assert.assertEquals(cartsize,1);
         String actualcartname=cartpage.viewcartproductname();
+        System.out.println("the product cart name is " +actualcartname);
         Assert.assertEquals(actualcartname,actualproductname);
         String actualcartprice=cartpage.viewcartproductprice();
+        System.out.println("the product cart price is " +actualcartprice);
         Assert.assertEquals(actualcartprice,actualproductprice);
-        String cartemptyproductone=cartpage.emptycart();
-        Assert.assertEquals(cartemptyproductone,"Cart is empty!");
+        boolean cartemptyproduct=cartpage.emptycart();
+        Assert.assertTrue(cartemptyproduct);
     }
 
     @Test(priority = 1)
@@ -61,11 +65,13 @@ public class CartTest extends BaseTest {
         products.viewbluetopproduct();
         String cartsuccessmessage=products.addtwotbluetoptocart(2);
         Assert.assertEquals(cartsuccessmessage,"Your product has been added to cart.");
-        cartpage.viewcartlist();
+        boolean actual=cartpage.viewcartlist();
+        Assert.assertTrue(actual);
         String cartprice=cartpage.checkbluetopprouctprice();
+        System.out.println("the product cart price is "+cartprice);
         Assert.assertEquals(cartprice,"Rs. 1000");
-        String cartemptyproductone=cartpage.emptycart();
-        Assert.assertEquals(cartemptyproductone,"Cart is empty!");
+        boolean cartemptyproduct=cartpage.emptycart();
+        Assert.assertTrue(cartemptyproduct);
     }
 
     @Test(priority = 2)
@@ -77,11 +83,10 @@ public class CartTest extends BaseTest {
         System.out.println("the cart size is " + cartsize);
         Assert.assertEquals(cartsize, 2);
         cartpage.testtwoproductscart();
-        String cartemptyproductone=cartpage.emptycart();
-        String cartemptyproducttwo=cartpage.emptycart();
-        Assert.assertEquals(cartemptyproductone,"Cart is empty!");
-        Assert.assertEquals(cartemptyproducttwo,"Cart is empty!");
+        boolean cartemptyproducts=cartpage.emptycart();
+        Assert.assertTrue(cartemptyproducts);
     }
+
 
     @AfterMethod
     public void logout(ITestResult result) {
@@ -90,12 +95,13 @@ public class CartTest extends BaseTest {
 
         if (result.getStatus() == ITestResult.SUCCESS) {
             test.pass("Test Passed");
-        } else if (result.getStatus() == ITestResult.FAILURE) {
+        }
+        else if (result.getStatus() == ITestResult.FAILURE) {
             test.fail(result.getThrowable());
-        } else {
+        }
+        else {
             test.skip("Test Skipped");
         }
-
         extent.flush();
     }
 }

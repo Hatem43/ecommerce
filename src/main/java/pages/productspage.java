@@ -145,5 +145,3 @@ public class productspage extends SignupPage {
         gotocartprod.click();
     }
 }
-
-
