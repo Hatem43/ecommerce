@@ -102,14 +102,4 @@ public class Cartpage extends SignupPage {
         return isempty;
     }
 
-        /*
-        for(int i=0;i<tablerows.count();i++){
-            Locator row=tablerows.nth(i);
-            System.out.println("Row " + i);
-            Locator emptybutton=row.locator(".cart_quantity_delete");
-            emptybutton.click();
-
-        }
-
-         */
     }
