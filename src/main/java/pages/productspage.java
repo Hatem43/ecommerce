@@ -128,6 +128,7 @@ public class productspage extends SignupPage {
         bluetop.click();
         Locator cartbluetopbutton = page.locator(blueTopcart);
         cartbluetopbutton.click();
+        System.out.println("adding blueTop product to cart");
         Locator cart = page.locator(cartmssg);
         String cartmessage=cart.textContent();
         System.out.println(cartmessage);
@@ -138,6 +139,7 @@ public class productspage extends SignupPage {
         menshirt.click();
         Locator menshirtbutton = page.locator(Menshirtcart);
         menshirtbutton.click();
+        System.out.println("adding menshirt product to cart");
         Locator cartmen = page.locator(cartmssg);
         String cartmenmessage=cartmen.textContent();
         System.out.println(cartmenmessage);
