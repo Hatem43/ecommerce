@@ -96,7 +96,7 @@ public class Cartpage extends SignupPage {
             }
         }
         else {
-            isempty = false;
+            isempty = true;
             System.out.println("the cart is already empty!");
         }
         return isempty;
